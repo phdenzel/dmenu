@@ -22,3 +22,19 @@ Afterwards enter the following command to build and install dmenu
 Running dmenu
 -------------
 See the man page for details.
+
+
+For clone setup
+---------------
+
+  git clone git@github.com:phdenzel/dmenu
+  git remote add upstream git://git.suckless.org/dmenu
+
+
+Patches
+-------
+
+  border      - https://tools.suckless.org/dmenu/patches/border/
+  center      - https://tools.suckless.org/dmenu/patches/center/
+  highlight   - https://tools.suckless.org/dmenu/patches/highlight/
+  line height - https://tools.suckless.org/dmenu/patches/line-height/
