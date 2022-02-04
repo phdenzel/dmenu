@@ -6,13 +6,20 @@ include config.mk
 SRC = drw.c dmenu.c stest.c util.c
 OBJ = $(SRC:.c=.o)
 
-all: options dmenu stest
+all: options patching dmenu stest
 
 options:
 	@echo dmenu build options:
 	@echo "CFLAGS   = $(CFLAGS)"
 	@echo "LDFLAGS  = $(LDFLAGS)"
 	@echo "CC       = $(CC)"
+
+patching: clean
+	patch -p1 < patches/dmenu-lineheight-5.0.diff
+	patch -p1 < patches/dmenu-center-20200111-8cd37e1.diff
+	patch -p1 < patches/dmenu-border-4.9.diff
+	patch -p1 < patches/dmenu-highlight-20201211-fcdc159.diff
+	patch -p1 < patches/dmenu-phdconfig-1.0.diff
 
 .c.o:
 	$(CC) -c $(CFLAGS) $<
@@ -29,7 +36,8 @@ stest: stest.o
 	$(CC) -o $@ stest.o $(LDFLAGS)
 
 clean:
-	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz
+	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz config.h
+	git checkout -- config.def.h dmenu.c dmenu.1
 
 dist: clean
 	mkdir -p dmenu-$(VERSION)
