@@ -6,7 +6,7 @@ diff -up dmenu-a/config.def.h dmenu-b/config.def.h
  /* -fn option overrides fonts[0]; default X11 font or font set */
  static const char *fonts[] = {
 -	"monospace:size=10"
-+	"xft:Source Code Pro:size=10"
++	"xft:Source Code Pro:size=14"
  };
  static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
  static const char *colors[SchemeLast][2] = {
